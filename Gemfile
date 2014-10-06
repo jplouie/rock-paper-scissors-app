@@ -1,0 +1,10 @@
+source 'https://rubygems.org'
+
+gem 'rock_paper_scissors', :git => 'https://github.com/jplouie/rock-paper-scissors.git'
+gem 'pg'
+gem 'activerecord', '~> 4.1.0'
+gem 'active_record_tasks', '~> 1.1.0'
+gem 'pry-byebug'
+gem 'sinatra'
+gem 'rake'
+gem 'rerun'

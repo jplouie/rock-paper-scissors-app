@@ -1,0 +1,11 @@
+development:
+  adapter: postgresql
+  database: rps-db
+  pool: 10
+  timeout: 5000
+
+test:
+  adapter: postgresql
+  database: rps-db
+  pool: 10
+  timeout: 5000

@@ -1,0 +1,47 @@
+<h2 class='main-title'>Please log in to create a Tournament</h2>
+
+<div class='info'>
+  <div class='signin'>
+    <h3>Log in</h3>
+    <form action='/login' method='post'>
+      <label for='login'>Name:</label><br>
+      <input id='login' name='name' type='text'><br>
+      <label for='pw'>Password:</label><br>
+      <input id='pw' name='password' type='password'><br>
+      <input type='submit' value='go'>
+    </form>
+  </div>
+  <div class='signup' style='display: none;'>
+    <h3>Sign Up</h3>
+    <form action='/signup' method='post'>
+      <label for='login'>Name:</label><br>
+      <input id='login' name='name' type='text'><br>
+      <label for='pw'>Password:</label><br>
+      <input id='pw' name='password' type='password'><br>
+      <input type='submit' value='submit'>
+    </form>
+  </div>
+  <br>
+  <button class='toggler' id='signup'>Sign up</button>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $('.toggler').on('click', function(){
+      var current = $(this).attr('id');
+      console.log(current);
+      if(current === 'signup'){
+        $(this).text('Log in');
+        $(this).attr('id', 'login');
+        $('.info').find('.signin').attr('style', 'display: none');
+        $('.info').find('.signup').removeAttr('style');
+      }
+      else{
+        $(this).text('Sign up');
+        $(this).attr('id', 'signup');
+        $('.info').find('.signin').removeAttr('style');
+        $('.info').find('.signup').attr('style', 'display: none');
+      }
+    });
+  });
+</script>

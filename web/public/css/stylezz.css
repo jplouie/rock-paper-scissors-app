@@ -1,0 +1,135 @@
+.main {
+  float: left;
+  width: 75%;
+}
+
+.main-title {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.info {
+  width: 500px;
+  margin-left: 40%;
+}
+
+.leaderboard {
+  float: right;
+  width: 20%;
+}
+
+.bracket {
+  float: right;
+  width: 50%;
+  margin-top: 20px;
+}
+
+.bracket td, .finished-bracket td {
+  height: 25px;
+  width: 100px;
+}
+
+.finished-bracket {
+  margin: 0 auto;
+  width: 425px;
+}
+
+.title h2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 25%;
+}
+
+.finished-bracket a{
+  margin-left: 36%;
+}
+
+h6 {
+  text-align: center;
+  margin-top: 4px;
+}
+
+.content {
+  float: left;
+  width: 40%;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.content h2 {
+  font-size: 30px;
+  font-weight: bold;
+  float: right;
+}
+
+.move {
+  clear: both;
+}
+
+.move select {
+  margin-top: 75px;
+}
+
+.move label {
+  margin-left: 250px;
+}
+
+.icons .fa {
+  margin-left: 75px;
+  margin-top: 50px;
+}
+
+.all {
+  float: right;
+  margin-top: 170px;
+}
+
+.logout {
+  margin-top: 10px;
+}
+
+.nav {
+  margin-left: 50%;
+  margin-top: 15%;
+}
+
+.row-2.col-0,
+.row-6.col-0,
+.row-10.col-0,
+.row-14.col-0,
+.row-5.col-1,
+.row-13.col-1,
+.row-11.col-2 {
+  border-bottom: 2px black solid;
+  border-right: 2px black solid;
+}
+
+.row-1.col-0,
+.row-5.col-0,
+.row-9.col-0,
+.row-13.col-0,
+.row-2.col-1,
+.row-10.col-1,
+.row-4.col-2 {
+  border-top: 2px black solid;
+  border-right: 2px black solid;
+}
+
+.row-7.col-3 {
+  border-bottom: 2px black solid;
+}
+
+.row-3.col-1,
+.row-4.col-1,
+.row-11.col-1,
+.row-12.col-1,
+.row-5.col-2,
+.row-6.col-2,
+.row-7.col-2,
+.row-8.col-2,
+.row-9.col-2,
+.row-10.col-2 {
+  border-right: 2px black solid;
+}

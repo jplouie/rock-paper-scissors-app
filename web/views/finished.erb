@@ -1,0 +1,111 @@
+<link rel='stylesheet' type='text/css' href='../css/reset.css'>
+<link rel='stylesheet' type='text/css' href='../css/stylezz.css'>
+
+<div class='title'>
+  <h2>This tournament is over, <%= @winner.name %> is the champion!</h2>
+</div>
+<div class='finished-bracket'>
+  <table>
+    <% k = 0 %>
+    <% 16.times do |i| %>
+      <tr>
+      <% 4.times do |j| %>
+        <% check = false %>
+        <% if (i % 4 == 0 || i % 4 == 3) && j == 0 %>
+          <td class='col-<%= j %> row-<%= i %>'>
+            <h6><%= @all_players[k].name %><h6>
+          </td>
+          <% k += 1 %>
+        <% elsif i == 1 && j == 1 %>
+          <% (0..1).each do |q| %>
+            <% if @tournies[q].round > 1 %>
+              <td class='col-<%= j %> row-<%= i %>'>
+                <h6><%= @all_players[q].name %><h6>
+              </td>
+              <% check = true %>
+            <% end %>
+          <% end %>
+          <% if !check %>
+            <td class='col-<%= j %> row-<%= i %>'></td>
+          <% end %>
+        <% elsif i == 6 && j == 1 %>
+          <% (2..3).each do |q| %>
+            <% if @tournies[q].round > 2 %>
+              <td class='col-<%= j %> row-<%= i %>'>
+                <h6><%= @all_players[q].name %><h6>
+              </td>
+              <% check = true %>
+            <% end %>
+          <% end %>
+          <% if !check %>
+            <td class='col-<%= j %> row-<%= i %>'></td>
+          <% end %>
+        <% elsif i == 9 && j == 1 %>
+          <% (4..5).each do |q| %>
+            <% if @tournies[q].round > 3 %>
+              <td class='col-<%= j %> row-<%= i %>'>
+                <h6><%= @all_players[q].name %><h6>
+              </td>
+              <% check = true %>
+            <% end %>
+          <% end %>
+          <% if !check %>
+            <td class='col-<%= j %> row-<%= i %>'></td>
+          <% end %>
+        <% elsif i == 14 && j == 1 %>
+          <% (6..7).each do |q| %>
+            <% if @tournies[q].round > 4 %>
+              <td class='col-<%= j %> row-<%= i %>'>
+                <h6><%= @all_players[q].name %><h6>
+              </td>
+              <% check = true %>
+            <% end %>
+          <% end %>
+          <% if !check %>
+            <td class='col-<%= j %> row-<%= i %>'></td>
+          <% end %>
+        <% elsif i == 3 && j == 2 %>
+          <% (0..3).each do |q| %>
+            <% if @tournies[q].round > 5 %>
+              <td class='col-<%= j %> row-<%= i %>'>
+                <h6><%= @all_players[q].name %><h6>
+              </td>
+              <% check = true %>
+            <% end %>
+          <% end %>
+          <% if !check %>
+            <td class='col-<%= j %> row-<%= i %>'></td>
+          <% end %>
+        <% elsif i == 12 && j == 2 %>
+          <% (4..7).each do |q| %>
+            <% if @tournies[q].round > 6 %>
+              <td class='col-<%= j %> row-<%= i %>'>
+                <h6><%= @all_players[q].name %><h6>
+              </td>
+              <% check = true %>
+            <% end %>
+          <% end %>
+          <% if !check %>
+            <td class='col-<%= j %> row-<%= i %>'></td>
+          <% end %>
+        <% elsif i == 7 && j == 3 %>
+          <% (0..7).each do |q| %>
+            <% if @tournies[q].status == 'champion' %>
+              <td class='col-<%= j %> row-<%= i %>'>
+                <h6><%= @all_players[q].name %><h6>
+              </td>
+              <% check = true %>
+            <% end %>
+          <% end %>
+          <% if !check %>
+            <td class='col-<%= j %> row-<%= i %>'></td>
+          <% end %>
+        <% else %>
+          <td class='col-<%= j %> row-<%= i %>'></td>
+        <% end %>
+      <% end %>
+      </tr>
+    <% end %>
+  </table>
+  <a href='/tournies'><button>All tournaments</button></a>
+</div>

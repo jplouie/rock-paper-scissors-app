@@ -1,0 +1,54 @@
+<div class='main'>
+  <% if @actives.length > 0 %>
+    <h2>All active tournaments</h2>
+    <% @actives.each do |tourny| %>
+      <li>Tournament <%= tourny.id %>
+        <a href='/tournies/<%= tourny.id %>'>
+          <button>Play</button>
+        </a>
+      </li>
+    <% end %>
+  <% else %>
+    <h3>There are no active tournaments!</h3>
+  <% end %>
+  <% if @finished.length > 0 %>
+    <h2>All completed tournaments</h2>
+    <% @finished.each do |tourny| %>
+      <li>Tournament <%= tourny.id %>
+        <a href='/tournies/<%= tourny.id %>'>
+          <button>View</button>
+        </a>
+      </li>
+    <% end %>
+  <% end %>
+  <br>
+  <div class='nav'>
+    <a href='/tournies/new'><button>Create a new Tournament</button></a>
+    <form action="/logout" method="post" class='logout'>
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Log Out">
+    </form>
+  </div>
+</div>
+<div class='leaderboard'>
+  <table>
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Player</th>
+        <th>Wins</th>
+        <th>Losses</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @players.each_index do |i| %>
+        <tr>
+          <td><%= i + 1 %></td>
+          <td><%= @players[i].name %></td>
+          <td><%= @players[i].wins %></td>
+          <td><%= @players[i].loss %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <table>
+</div>

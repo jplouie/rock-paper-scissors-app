@@ -1,0 +1,18 @@
+<h3>Please enter the players' names</h3>
+<form action='/tournies' method='post'>
+  <label for='o'>Games per match:</label>
+  <select id='o' name='options'>
+    <option value='1'>1 out of 1</option>
+    <option value='2'>2 out of 3</option>
+    <option value='3'>3 out of 5</option>
+  </select>
+  <br>
+  <br>
+  <p>Player names:<p>
+  <% 8.times do |i| %>
+    <%= i + 1 %>. <input name='players[]' type='text'><br>
+  <% end %>
+  <br>
+  <input type='submit'>
+</form>
+<a href='/tournies'><button>View all Tournaments</button></a>

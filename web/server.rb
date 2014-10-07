@@ -88,31 +88,7 @@ class RPS::Server < Sinatra::Application
   end
 
   post '/tournies' do
-    @new_tourny = RPS::Active.create(status: 'active')
-    @players = params[:players]
-    @init_round = 0
-    @players.each_index do |i|
-      @init_round += 1 if i % 2 == 0
-      @p = RPS::Player.find_by(name: @players[i])
-      if @p
-        RPS::Tourny.create(
-          active_id: @new_tourny.id,
-          player_id: @p.id,
-          status: 'waiting',
-          round: @init_round,
-          slot_number: i + 1
-        )
-      else
-        @p = RPS::Player.create(name: @players[i], wins: 0, loss: 0)
-        RPS::Tourny.create(
-          active_id: @new_tourny.id,
-          player_id: @p.id,
-          status: 'waiting',
-          round: @init_round,
-          slot_number: i + 1
-        )
-      end
-    end
+    RPS::Tourny.create_tourny(params)
     redirect to('/tournies')
   end
 

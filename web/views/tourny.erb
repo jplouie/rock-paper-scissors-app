@@ -16,8 +16,20 @@
       <i class='fa fa-file-o fa-5x' name='move' value='paper'></i>
       <i class='fa fa-cut fa-5x' name='move' value='scissors'></i>
     </div>
-    <a href='/tournies' class='all'><button>All tournaments</button></a>
   </div>
+  <div class='current'>
+    <h3 class='round-wins'>Current round wins<h3>
+    <ul>
+      <% @tournies.each_index do |i| %>
+        <% if @tournies[i].status == 'eliminated' %>
+          <li style='text-decoration: line-through'><%= @all_players[i].name %>: <%= @tournies[i].status %></li>
+        <% else %>
+          <li><%= @all_players[i].name %>: <%= @tournies[i].wins %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <a href='/tournies' class='all'><button>All tournaments</button></a>
 </div>
 
 <div class='bracket'>
@@ -124,6 +136,7 @@
     <% end %>
   </table>
 </div>
+
 
 <script>
   $(document).ready(function(){

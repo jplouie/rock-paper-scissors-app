@@ -95,6 +95,17 @@ h6 {
   margin-top: 15%;
 }
 
+.current {
+  float: left;
+  clear: both;
+  margin-left: 10%;
+  margin-top: 10%;
+}
+
+.round-wins {
+  font-size: 20px;
+}
+
 .row-2.col-0,
 .row-6.col-0,
 .row-10.col-0,

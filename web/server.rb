@@ -8,6 +8,10 @@ class RPS::Server < Sinatra::Application
     enable :sessions
   end
 
+  get '/' do
+    redirect to('/tournies')
+  end
+
   def check_login
     if !session[:user_id]
       redirect to('/login')
@@ -48,12 +52,11 @@ class RPS::Server < Sinatra::Application
 
   get '/tournies' do
     check_login
-    @players = RPS::Player.all
-    @players = @players.sort_by { |player| player.wins }.reverse
+    @players = RPS::Player.all.sort_by { |player| player.wins }.reverse
     @actives = RPS::Active.where(status: 'active')
-    @actives = @actives.sort_by { |tourny| tourny.id }
+      .sort_by { |tourny| tourny.id }
     @finished = RPS::Active.where(status: 'finished')
-    @finished = @finished.sort_by { |tourny| tourny.id }
+      .sort_by { |tourny| tourny.id }
     erb :actives
   end
 
@@ -65,16 +68,14 @@ class RPS::Server < Sinatra::Application
   get '/tournies/:id' do
     check_login
     @tourny = RPS::Active.find(params[:id])
-    @tournies = RPS::Tourny.where(active_id: @tourny.id)
+    @tournies = RPS::Tourny.where(active_id: @tourny.id).sort_by { |player| player.slot_number }
     @all_players = @tournies.map do |player|
       RPS::Player.find(player.player_id)
-    end
-    @all_players = @all_players.sort_by { |player| player.id }
-    @tournies = @tournies.sort_by { |player| player.slot_number }
+    end.sort_by { |player| player.id }
     if @tourny.status == 'active'
       @players = RPS::Tourny.where(active_id: @tourny.id, status: 'waiting')
-      @players = @players.map { |player| RPS::Player.find(player.player_id) }
-      @players = @players.sort_by { |player| player.id }
+        .map { |player| RPS::Player.find(player.player_id) }
+        .sort_by { |player| player.id }
       erb :tourny
     else
       @player = RPS::Tourny.find_by(active_id: @tourny.id, status: 'champion')
